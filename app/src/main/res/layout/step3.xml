@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:weightSum="1">
+
+
+    <RadioGroup
+        android:layout_marginTop="10dp"
+        android:id="@+id/radioRotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/device"
+            android:background="#d4d4d4"
+            android:layout_marginBottom="4dp"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:id="@+id/radioPhone"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tablet"
+            android:id="@+id/radioTablet"
+            android:checked="false" />
+    </RadioGroup>
+
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/orientation"
+        android:background="#d4d4d4"
+        android:layout_marginBottom="4dp" />
+    <RadioGroup
+        android:layout_width="359dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.65">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/portrait"
+            android:id="@+id/radioPortrait"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/landscape"
+            android:id="@+id/radioLandscape"
+            android:checked="false" />
+    </RadioGroup>
+
+</LinearLayout>

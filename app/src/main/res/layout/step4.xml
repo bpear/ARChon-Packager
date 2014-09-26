@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/complete"
+        android:text="@string/completed"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/location"
+        android:text="@string/location"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appname"
+        android:text="@string/appSelected"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/orientation"
+        android:text="@string/orSelected"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/device"
+        android:text="@string/deviceSelected"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:textSize="20sp" />
+
+</LinearLayout>
