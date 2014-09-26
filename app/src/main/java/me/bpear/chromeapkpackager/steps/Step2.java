@@ -47,10 +47,12 @@ public class Step2 extends WizardStep {
             if (rb1.isChecked()) { // If button 1 is checked set type int to 1
                 Globals g = Globals.getInstance();
                 g.setSelection(0);// Sets global variable
+                notifyCompleted(true); //Notify wizard that step is complete.
             }
             if (rb2.isChecked()) {
                 Globals g = Globals.getInstance();
                 g.setSelection(1);// Sets global variable
+                notifyCompleted(true); //Notify wizard that step is complete.
             }
         }
     };

@@ -27,7 +27,7 @@ public class wizardStartup extends BasicWizardLayout {
                 to create the wizard flow.
                  */
                 .addStep(Step1.class)
-                .addStep(Step2.class)
+                .addStep(Step2.class, true)
                 .addStep(Step3.class)
                 .addStep(Step4.class)
 
