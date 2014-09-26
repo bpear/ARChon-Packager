@@ -21,5 +21,7 @@
     <string name="portrait">Portrait</string>
     <string name="completed">Conversion is complete!</string>
     <string name="location">Location: "ChromeAPKS" folder</string>
+    <string name="complete_info">Easily share generated zip:</string>
+    <string name="share_button">Share Chrome Application</string>
 
 </resources>

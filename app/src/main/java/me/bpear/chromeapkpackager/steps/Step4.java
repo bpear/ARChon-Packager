@@ -1,12 +1,18 @@
 package me.bpear.chromeapkpackager.steps;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.codepond.wizardroid.WizardStep;
+
+import java.io.File;
 
 import me.bpear.chromeapkpackager.Globals;
 import me.bpear.chromeapkpackager.R;
@@ -22,6 +28,14 @@ public class Step4 extends WizardStep {
 
     //You must have an empty constructor for every step
     public Step4() {
+    }
+
+    private void sendFile(File outFile) {
+        Uri uriToZip = Uri.fromFile(outFile);
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("*/*");
+        sendIntent.putExtra(android.content.Intent.EXTRA_STREAM, uriToZip);
+        startActivity(Intent.createChooser(sendIntent, "Send Chrome App:"));
     }
 
     //Set your layout here
@@ -41,6 +55,19 @@ public class Step4 extends WizardStep {
         tv3.setText("Device mode selected: " + device);
 
         return v;
+    }
+
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        final Button button = (Button) getActivity().findViewById(R.id.share);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                File chrome = new File(Environment.getExternalStorageDirectory().toString() + File.separator + "/ChromeAPKS/" + g.getSelectedAppName() + ".zip");
+                sendFile(chrome);
+            }
+        });
     }
 
     /**
