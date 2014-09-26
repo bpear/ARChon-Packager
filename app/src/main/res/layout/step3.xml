@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="@string/phone"
             android:id="@+id/radioPhone"
-            android:checked="false" />
+            android:checked="true" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="@string/portrait"
             android:id="@+id/radioPortrait"
-            android:checked="false" />
+            android:checked="true" />
 
         <RadioButton
             android:layout_width="wrap_content"
