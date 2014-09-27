@@ -53,6 +53,7 @@ public class activityInstalled extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.installed_list);
+        g.setstep(0);
 
         //Open either file explorer
         if (selection == 1) {
@@ -419,6 +420,7 @@ public class activityInstalled extends Activity {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
+                        activityWizard.start.finish();
                         Intent intent = new Intent(activityInstalled.this, activityWizard.class);
                         finish();
                         startActivity(intent);

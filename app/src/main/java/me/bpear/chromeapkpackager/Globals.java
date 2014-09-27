@@ -12,6 +12,8 @@ public class Globals {
     private String PackageName;
     private String device = "phone";
     private String rotate = "portrait";
+    private int step;
+    public int test;
 
     // Restrict the constructor from being instantiated
     private Globals() {
@@ -72,6 +74,14 @@ public class Globals {
 
     public String getrotate() {
         return this.rotate;
+    }
+
+    public void setstep(int d) {
+        this.step = d;
+    }
+
+    public int getstep() {
+        return this.step;
     }
 
     public static synchronized Globals getInstance() {

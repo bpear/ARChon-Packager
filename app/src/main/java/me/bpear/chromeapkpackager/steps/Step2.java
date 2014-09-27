@@ -17,6 +17,7 @@ import me.bpear.chromeapkpackager.R;
 import me.bpear.chromeapkpackager.activityInstalled;
 
 public class Step2 extends WizardStep {
+    Globals g = Globals.getInstance();
     private ProgressDialog pd;
 
     //You must have an empty constructor for every step
@@ -28,6 +29,7 @@ public class Step2 extends WizardStep {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        g.setstep(2);
         return inflater.inflate(R.layout.step2, container, false);
     }
 
@@ -47,7 +49,6 @@ public class Step2 extends WizardStep {
             RadioButton rb1 = (RadioButton) getActivity().findViewById(R.id.rbInstalled);  //you dont need to do this again if global ...
             RadioButton rb2 = (RadioButton) getActivity().findViewById(R.id.rbAPK);  //you dont need to do this again if global ...
             if (rb1.isChecked()) { // If button 1 is checked set type int to 1
-                Globals g = Globals.getInstance();
                 g.setSelection(0);// Sets global variable
                 notifyCompleted(true); //Notify wizard that step is complete.
             }

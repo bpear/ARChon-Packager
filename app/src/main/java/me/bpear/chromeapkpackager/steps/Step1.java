@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.codepond.wizardroid.WizardStep;
+
+import me.bpear.chromeapkpackager.Globals;
 import me.bpear.chromeapkpackager.R;
 
 public class Step1 extends WizardStep {
+    Globals g = Globals.getInstance();
 
     //You must have an empty constructor for every step
     public Step1() {
@@ -17,7 +20,7 @@ public class Step1 extends WizardStep {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        g.setstep(1);
         return inflater.inflate(R.layout.step1, container, false);
     }
 
