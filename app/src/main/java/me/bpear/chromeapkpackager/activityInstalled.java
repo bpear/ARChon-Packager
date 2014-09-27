@@ -98,7 +98,7 @@ public class activityInstalled extends Activity {
                                     ((RadioGroup) view.getParent()).check(view.getId());
                                     SelectedAppId = view.getId(); //store AppID
                                     SelectedAppName = AppName; //Store App name
-                                    Toast.makeText(activityInstalled.this, "App selected. Go to next step.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(activityInstalled.this, "App selected.", Toast.LENGTH_LONG).show();
                                     //Save variables for next fragment
                                     g.setSelectedAppId(SelectedAppId);// Sets global variable
                                     g.setSelectedAppName(SelectedAppName);
@@ -163,7 +163,7 @@ public class activityInstalled extends Activity {
             case PICKFILE_RESULT_CODE:
                 if (resultCode == RESULT_OK) { //If pick file was successful
                     g.setAPKPath(data.getData().getPath()); //Get apk path from global variables.
-                    Toast.makeText(this, "APK Selected. Go to next step.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "APK Selected.", Toast.LENGTH_LONG).show();
 
 
                     try {
