@@ -32,6 +32,7 @@ public class Step1 extends WizardStep {
     public void onExit(int exitCode) {
         switch (exitCode) {
             case WizardStep.EXIT_NEXT:
+                g.setstep(2);
                 bindDataFields();
                 break;
             case WizardStep.EXIT_PREVIOUS:

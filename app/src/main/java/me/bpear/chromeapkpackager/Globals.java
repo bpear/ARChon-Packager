@@ -12,7 +12,7 @@ public class Globals {
     private String PackageName;
     private String device = "phone";
     private String rotate = "portrait";
-    private int step;
+    private int step = 1;
     public int test;
 
     // Restrict the constructor from being instantiated

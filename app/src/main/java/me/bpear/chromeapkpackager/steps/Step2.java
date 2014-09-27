@@ -29,7 +29,6 @@ public class Step2 extends WizardStep {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        g.setstep(2);
         return inflater.inflate(R.layout.step2, container, false);
     }
 
