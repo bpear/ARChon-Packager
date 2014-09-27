@@ -8,8 +8,8 @@ android {
         applicationId "me.bpear.chromeapkpackager"
         minSdkVersion 15
         targetSdkVersion 20
-        versionCode 8
-        versionName "0.8"
+        versionCode 10
+        versionName "0.9"
     }
     buildTypes {
         release {

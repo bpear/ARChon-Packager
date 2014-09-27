@@ -1,7 +1,9 @@
 package me.bpear.chromeapkpackager;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -407,6 +409,31 @@ public class activityInstalled extends Activity {
         finish(); // End dialog activity to return to app wizard.
 
         //TODO: Cleanup leftover directories (Unzipped app directory, pulled app directory are not needed.)
+    }
+
+    @Override
+    public void onBackPressed() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        Intent intent = new Intent(activityInstalled.this, activityWizard.class);
+                        finish();
+                        startActivity(intent);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Back button pressed. Do you want to restart the wizard?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("Cancel", dialogClickListener).show();
     }
 
 }
