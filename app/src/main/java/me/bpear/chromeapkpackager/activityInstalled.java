@@ -1,6 +1,7 @@
 package me.bpear.chromeapkpackager;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -9,6 +10,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -41,6 +43,7 @@ public class activityInstalled extends Activity {
     String SelectedAppName;
     int SelectedAppId;
     int selection = g.getSelection();
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +83,35 @@ public class activityInstalled extends Activity {
                             //Save variables for next fragment
                             g.setSelectedAppId(SelectedAppId);// Sets global variable
                             g.setSelectedAppName(SelectedAppName);
-                            pullAPk(); //Pull apk from phone to /ChromeAPKS/Pulled folder.
+
+                            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
+
+                                @Override
+                                protected void onPreExecute() {
+                                    pd = new ProgressDialog(activityInstalled.this);
+                                    pd.setTitle("Processing...");
+                                    pd.setMessage("Please wait.");
+                                    pd.setCancelable(false);
+                                    pd.setIndeterminate(true);
+                                    pd.show();
+                                }
+
+                                @Override
+                                protected Void doInBackground(Void... arg0) {
+                                    pullAPk();
+                                    return null;
+                                }
+
+                                @Override
+                                protected void onPostExecute(Void result) {
+                                    if (pd != null) {
+                                        pd.dismiss();
+                                    }
+                                }
+
+                            };
+                            task.execute((Void[]) null);
+
                         }
                     });
                 }

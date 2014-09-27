@@ -1,6 +1,8 @@
 package me.bpear.chromeapkpackager.steps;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,7 @@ import me.bpear.chromeapkpackager.R;
 import me.bpear.chromeapkpackager.activityInstalled;
 
 public class Step2 extends WizardStep {
-
+    private ProgressDialog pd;
 
     //You must have an empty constructor for every step
     public Step2() {
@@ -65,8 +67,34 @@ public class Step2 extends WizardStep {
     public void onExit(int exitCode) {
         switch (exitCode) {
             case WizardStep.EXIT_NEXT:
-                Intent intent = new Intent(getActivity(), activityInstalled.class);
-                startActivity(intent);//Start file/app selection activity
+                AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
+
+                    @Override
+                    protected void onPreExecute() {
+                        pd = new ProgressDialog(getActivity());
+                        pd.setTitle("Processing...");
+                        pd.setMessage("Please wait.");
+                        pd.setCancelable(false);
+                        pd.setIndeterminate(true);
+                        pd.show();
+                    }
+
+                    @Override
+                    protected Void doInBackground(Void... arg0) {
+                        Intent intent = new Intent(getActivity(), activityInstalled.class);
+                        startActivity(intent);//Start file/app selection activity
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void result) {
+                        if (pd != null) {
+                            pd.dismiss();
+                        }
+                    }
+
+                };
+                task.execute((Void[]) null);
                 bindDataFields();
                 break;
             case WizardStep.EXIT_PREVIOUS:
