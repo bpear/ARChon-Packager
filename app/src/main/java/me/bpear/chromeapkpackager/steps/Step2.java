@@ -67,34 +67,8 @@ public class Step2 extends WizardStep {
     public void onExit(int exitCode) {
         switch (exitCode) {
             case WizardStep.EXIT_NEXT:
-                AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
-
-                    @Override
-                    protected void onPreExecute() {
-                        pd = new ProgressDialog(getActivity());
-                        pd.setTitle("Processing...");
-                        pd.setMessage("Please wait.");
-                        pd.setCancelable(false);
-                        pd.setIndeterminate(true);
-                        pd.show();
-                    }
-
-                    @Override
-                    protected Void doInBackground(Void... arg0) {
-                        Intent intent = new Intent(getActivity(), activityInstalled.class);
-                        startActivity(intent);//Start file/app selection activity
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(Void result) {
-                        if (pd != null) {
-                            pd.dismiss();
-                        }
-                    }
-
-                };
-                task.execute((Void[]) null);
+                Intent intent = new Intent(getActivity(), activityInstalled.class);
+                startActivity(intent);//Start file/app selection activity
                 bindDataFields();
                 break;
             case WizardStep.EXIT_PREVIOUS:

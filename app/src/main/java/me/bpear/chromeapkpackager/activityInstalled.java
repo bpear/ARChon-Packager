@@ -44,6 +44,8 @@ public class activityInstalled extends Activity {
     int SelectedAppId;
     int selection = g.getSelection();
     private ProgressDialog pd;
+    ViewGroup appButtonLayout;
+    Map<String, Button> map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,70 +59,98 @@ public class activityInstalled extends Activity {
             intent.setType("file/*");
             startActivityForResult(intent, PICKFILE_RESULT_CODE);
         }
-        //or list installed apps
+
         if (selection == 0) {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
 
-            Map<String, Button> map = new TreeMap<String, Button>(); //Create TreeMap to store list of apps.
-
-            ViewGroup appButtonLayout = (ViewGroup) findViewById(R.id.installed_radio_group);  // This is the id of the RadioGroup we defined
-
-            List<PackageInfo> PackList = getPackageManager().getInstalledPackages(0); //Generate list of apps installed
-            for (int i = 0; i < PackList.size(); i++) {
-                PackageInfo PackInfo = PackList.get(i);
-                if ((PackInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) { // Do not use system apps. Only user/data apps.
-                    final String AppName = PackInfo.applicationInfo.loadLabel(getPackageManager()).toString();
-                    RadioButton buttonr = new RadioButton(this);
-                    buttonr.setText(AppName); //Set text of button to applications name
-                    buttonr.setId(i);
-                    map.put(AppName, buttonr); //Put buttons in TreeMap
-                    buttonr.setOnClickListener(new View.OnClickListener() { //When app radio button is selected
-                        @Override
-                        public void onClick(View view) {
-                            ((RadioGroup) view.getParent()).check(view.getId());
-                            SelectedAppId = view.getId(); //store AppID
-                            SelectedAppName = AppName; //Store App name
-                            Toast.makeText(activityInstalled.this, "App selected. Go to next step.", Toast.LENGTH_LONG).show();
-                            //Save variables for next fragment
-                            g.setSelectedAppId(SelectedAppId);// Sets global variable
-                            g.setSelectedAppName(SelectedAppName);
-
-                            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
-
-                                @Override
-                                protected void onPreExecute() {
-                                    pd = new ProgressDialog(activityInstalled.this);
-                                    pd.setTitle("Processing...");
-                                    pd.setMessage("Please wait.");
-                                    pd.setCancelable(false);
-                                    pd.setIndeterminate(true);
-                                    pd.show();
-                                }
-
-                                @Override
-                                protected Void doInBackground(Void... arg0) {
-                                    pullAPk();
-                                    return null;
-                                }
-
-                                @Override
-                                protected void onPostExecute(Void result) {
-                                    if (pd != null) {
-                                        pd.dismiss();
-                                    }
-                                }
-
-                            };
-                            task.execute((Void[]) null);
-
-                        }
-                    });
+                @Override
+                protected void onPreExecute() {
+                    pd = new ProgressDialog(activityInstalled.this);
+                    pd.setTitle("Processing...");
+                    pd.setMessage("Please wait.");
+                    pd.setCancelable(false);
+                    pd.setIndeterminate(true);
+                    pd.show();
                 }
-            }
 
-            for (Button b : map.values()) { //Add buttons in TreeMap to view.
-                appButtonLayout.addView(b);
-            }
+                @Override
+                protected Void doInBackground(Void... arg0) {
+                    //or list installed apps
+                    map = new TreeMap<String, Button>(); //Create TreeMap to store list of apps.
+
+                    appButtonLayout = (ViewGroup) findViewById(R.id.installed_radio_group);  // This is the id of the RadioGroup we defined
+
+                    List<PackageInfo> PackList = getPackageManager().getInstalledPackages(0); //Generate list of apps installed
+                    for (int i = 0; i < PackList.size(); i++) {
+                        PackageInfo PackInfo = PackList.get(i);
+                        if ((PackInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) { // Do not use system apps. Only user/data apps.
+                            final String AppName = PackInfo.applicationInfo.loadLabel(getPackageManager()).toString();
+                            RadioButton buttonr = new RadioButton(activityInstalled.this);
+                            buttonr.setText(AppName); //Set text of button to applications name
+                            buttonr.setId(i);
+                            map.put(AppName, buttonr); //Put buttons in TreeMap
+                            buttonr.setOnClickListener(new View.OnClickListener() { //When app radio button is selected
+                                @Override
+                                public void onClick(View view) {
+                                    ((RadioGroup) view.getParent()).check(view.getId());
+                                    SelectedAppId = view.getId(); //store AppID
+                                    SelectedAppName = AppName; //Store App name
+                                    Toast.makeText(activityInstalled.this, "App selected. Go to next step.", Toast.LENGTH_LONG).show();
+                                    //Save variables for next fragment
+                                    g.setSelectedAppId(SelectedAppId);// Sets global variable
+                                    g.setSelectedAppName(SelectedAppName);
+
+                                    AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
+
+                                        @Override
+                                        protected void onPreExecute() {
+                                            pd = new ProgressDialog(activityInstalled.this);
+                                            pd.setTitle("Processing...");
+                                            pd.setMessage("Please wait.");
+                                            pd.setCancelable(false);
+                                            pd.setIndeterminate(true);
+                                            pd.show();
+                                        }
+
+                                        @Override
+                                        protected Void doInBackground(Void... arg0) {
+                                            pullAPk();
+                                            return null;
+                                        }
+
+                                        @Override
+                                        protected void onPostExecute(Void result) {
+                                            if (pd != null) {
+                                                pd.dismiss();
+                                            }
+                                        }
+
+                                    };
+                                    task.execute((Void[]) null);
+
+
+                                }
+                            });
+                        }
+                    }
+                    return null;
+                }
+
+
+                @Override
+                protected void onPostExecute(Void result) {
+                    if (pd != null) {
+                        for (Button b : map.values()) { //Add buttons in TreeMap to view.
+                            appButtonLayout.addView(b);
+                        }
+                        pd.dismiss();
+                    }
+                }
+
+            };
+            task.execute((Void[]) null);
         }
+
     }
 
     @Override
