@@ -1,5 +1,8 @@
 package me.bpear.chromeapkpackager.steps;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -26,6 +29,7 @@ public class Step3 extends WizardStep {
 
 
     Globals g = Globals.getInstance();
+    private ProgressDialog pd;
 
     //You must have an empty constructor for every step
     public Step3() {
@@ -246,8 +250,34 @@ public class Step3 extends WizardStep {
     public void onExit(int exitCode) {
         switch (exitCode) {
             case WizardStep.EXIT_NEXT:
-                makeManifest(); // Generate Chrome manifest.json
-                cleanUp();
+                AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
+
+                    @Override
+                    protected void onPreExecute() {
+                        pd = new ProgressDialog(getActivity());
+                        pd.setTitle("Processing...");
+                        pd.setMessage("Please wait.");
+                        pd.setCancelable(false);
+                        pd.setIndeterminate(true);
+                        pd.show();
+                    }
+
+                    @Override
+                    protected Void doInBackground(Void... arg0) {
+                        makeManifest(); // Generate Chrome manifest.json
+                        cleanUp();
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(Void result) {
+                        if (pd != null) {
+                            pd.dismiss();
+                        }
+                    }
+
+                };
+                task.execute((Void[]) null);
                 bindDataFields();
                 break;
             case WizardStep.EXIT_PREVIOUS:
