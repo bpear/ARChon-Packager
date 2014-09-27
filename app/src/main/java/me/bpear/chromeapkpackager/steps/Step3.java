@@ -220,6 +220,23 @@ public class Step3 extends WizardStep {
         }
     }
 
+    void DeleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles())
+                DeleteRecursive(child);
+
+        fileOrDirectory.delete();
+    }
+
+    public void cleanUp() { // Clean up directories that are not needed after zipping chrome app
+
+        File appFolder = new File(Environment.getExternalStorageDirectory().toString() + File.separator + "/ChromeAPKS/" + g.getSelectedAppName());
+        File apkFolder = new File(Environment.getExternalStorageDirectory().toString() + File.separator + "/ChromeAPKS/Pulled");
+        DeleteRecursive(appFolder);
+        DeleteRecursive(apkFolder);
+
+    }
+
 
     /**
      * Called whenever the wizard proceeds to the next step or goes back to the previous step
@@ -230,6 +247,7 @@ public class Step3 extends WizardStep {
         switch (exitCode) {
             case WizardStep.EXIT_NEXT:
                 makeManifest(); // Generate Chrome manifest.json
+                cleanUp();
                 bindDataFields();
                 break;
             case WizardStep.EXIT_PREVIOUS:
