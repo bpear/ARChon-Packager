@@ -2,7 +2,9 @@ package me.bpear.chromeapkpackager.steps;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -238,6 +240,19 @@ public class Step3 extends WizardStep {
         File apkFolder = new File(Environment.getExternalStorageDirectory().toString() + File.separator + "/ChromeAPKS/Pulled");
         DeleteRecursive(appFolder);
         DeleteRecursive(apkFolder);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            File dir = new File(Environment.getExternalStorageDirectory().toString() + File.separator + "ChromeAPKS" );
+            Uri contentUri = Uri.fromFile(dir);
+            mediaScanIntent.setData(contentUri);
+            getActivity().sendBroadcast(mediaScanIntent);
+        }
+        else
+        {
+            getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+        }
 
     }
 
