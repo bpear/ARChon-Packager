@@ -37,6 +37,8 @@ import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 public class activityInstalled extends Activity {
 
     private static final int PICKFILE_RESULT_CODE = 1;
@@ -48,6 +50,7 @@ public class activityInstalled extends Activity {
     private ProgressDialog pd;
     ViewGroup appButtonLayout;
     Map<String, Button> map;
+    MaterialDialog mMaterialDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -414,28 +417,27 @@ public class activityInstalled extends Activity {
 
     @Override
     public void onBackPressed() {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        mMaterialDialog = new MaterialDialog(this);
+        mMaterialDialog.setTitle("Back button pressed");
+        mMaterialDialog.setMessage("Do you want to restart the wizard?");
+        mMaterialDialog.setPositiveButton("YES", new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        //Yes button clicked
-                        activityWizard.start.finish();
-                        Intent intent = new Intent(activityInstalled.this, activityWizard.class);
-                        finish();
-                        startActivity(intent);
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        //No button clicked
-                        break;
-                }
+            public void onClick(View v) {
+                mMaterialDialog.dismiss();
+                activityWizard.start.finish();
+                Intent intent = new Intent(activityInstalled.this, activityWizard.class);
+                finish();
+                startActivity(intent);
             }
-        };
+        });
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Back button pressed. Do you want to restart the wizard?").setPositiveButton("Yes", dialogClickListener)
-                .setNegativeButton("Cancel", dialogClickListener).show();
+        mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMaterialDialog.dismiss();
+
+            }
+        });
     }
 
 }

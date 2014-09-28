@@ -5,6 +5,8 @@
         <item name="android:actionBarStyle">@style/MaterialActionBar</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="MaterialActionBar" parent="android:style/Widget.Holo.ActionBar.Solid">

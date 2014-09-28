@@ -20,7 +20,6 @@ public class Step1 extends WizardStep {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        g.setstep(1);
         return inflater.inflate(R.layout.step1, container, false);
     }
 
