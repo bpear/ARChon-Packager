@@ -1,7 +1,7 @@
 Chrome-APK-Packager
 ===================
 
-Available on Google Play: https://play.google.com/store/apps/details?id=me.bpear.chromeapkpackager
+Available on Google Play: I made that mistake once and got picked on by friends
 
 XDA thread: http://forum.xda-developers.com/android/apps-games/app-chrome-apk-packager-generates-t2885958
 
