@@ -1,4 +1,4 @@
-package me.bpear.chromeapkpackager.steps;
+package me.bpear.archonpackager.steps;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,8 +14,8 @@ import org.codepond.wizardroid.WizardStep;
 
 import java.io.File;
 
-import me.bpear.chromeapkpackager.Globals;
-import me.bpear.chromeapkpackager.R;
+import me.bpear.archonpackager.Globals;
+import me.bpear.archonpackager.R;
 
 public class Step4 extends WizardStep {
 

@@ -1,4 +1,4 @@
-package me.bpear.chromeapkpackager;
+package me.bpear.archonpackager;
 
 
 public class Globals {

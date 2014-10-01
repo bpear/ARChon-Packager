@@ -1,12 +1,12 @@
-package me.bpear.chromeapkpackager.wizards;
+package me.bpear.archonpackager.wizards;
 
 import org.codepond.wizardroid.WizardFlow;
 import org.codepond.wizardroid.layouts.BasicWizardLayout;
 
-import me.bpear.chromeapkpackager.steps.Step1;
-import me.bpear.chromeapkpackager.steps.Step2;
-import me.bpear.chromeapkpackager.steps.Step3;
-import me.bpear.chromeapkpackager.steps.Step4;
+import me.bpear.archonpackager.steps.Step1;
+import me.bpear.archonpackager.steps.Step2;
+import me.bpear.archonpackager.steps.Step3;
+import me.bpear.archonpackager.steps.Step4;
 
 
 public class wizardStartup extends BasicWizardLayout {

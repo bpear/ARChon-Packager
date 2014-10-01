@@ -17,12 +17,13 @@
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
-            android:layout_width="363dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/device"
-            android:background="#d4d4d4"
-            android:layout_marginBottom="4dp"/>
+            android:background="#46B995"
+            android:layout_marginBottom="4dp"
+            android:textColor="#ff000000" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -42,12 +43,13 @@
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
-        android:layout_width="349dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/orientation"
-        android:background="#d4d4d4"
-        android:layout_marginBottom="4dp" />
+        android:background="#46B995"
+        android:layout_marginBottom="4dp"
+        android:textColor="#ff000000" />
     <RadioGroup
         android:layout_width="359dp"
         android:layout_height="0dp"

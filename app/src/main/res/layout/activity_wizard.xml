@@ -7,5 +7,5 @@
         android:id="@+id/tutorial_wizard_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="me.bpear.chromeapkpackager.wizards.wizardStartup"/>
+        android:name="me.bpear.archonpackager.wizards.wizardStartup"/>
 </FrameLayout >

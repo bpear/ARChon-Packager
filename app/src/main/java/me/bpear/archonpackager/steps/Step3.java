@@ -1,4 +1,4 @@
-package me.bpear.chromeapkpackager.steps;
+package me.bpear.archonpackager.steps;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,8 +24,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import me.bpear.chromeapkpackager.Globals;
-import me.bpear.chromeapkpackager.R;
+import me.bpear.archonpackager.Globals;
+import me.bpear.archonpackager.R;
 
 public class Step3 extends WizardStep {
 

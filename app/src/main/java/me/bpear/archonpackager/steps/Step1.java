@@ -1,4 +1,4 @@
-package me.bpear.chromeapkpackager.steps;
+package me.bpear.archonpackager.steps;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import org.codepond.wizardroid.WizardStep;
 
-import me.bpear.chromeapkpackager.Globals;
-import me.bpear.chromeapkpackager.R;
+import me.bpear.archonpackager.R;
+import me.bpear.archonpackager.Globals;
 
 public class Step1 extends WizardStep {
     Globals g = Globals.getInstance();

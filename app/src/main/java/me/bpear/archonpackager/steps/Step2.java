@@ -1,8 +1,7 @@
-package me.bpear.chromeapkpackager.steps;
+package me.bpear.archonpackager.steps;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,9 @@ import android.widget.RadioButton;
 
 import org.codepond.wizardroid.WizardStep;
 
-import me.bpear.chromeapkpackager.Globals;
-import me.bpear.chromeapkpackager.R;
-import me.bpear.chromeapkpackager.activityInstalled;
+import me.bpear.archonpackager.Globals;
+import me.bpear.archonpackager.R;
+import me.bpear.archonpackager.activityInstalled;
 
 public class Step2 extends WizardStep {
     Globals g = Globals.getInstance();

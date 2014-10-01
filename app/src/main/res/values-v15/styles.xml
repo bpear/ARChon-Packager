@@ -1,7 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <item name="android:windowBackground">@drawable/background_holo_dark</item>
+        <item name="android:alertDialogStyle">@android:style/Theme.Holo.Dialog</item>
+        <item name="android:dialogTheme">@android:style/Theme.Holo.Dialog</item>
         <item name="android:actionBarStyle">@style/MaterialActionBar</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:clipToPadding">false</item>
@@ -10,12 +13,18 @@
     </style>
 
     <style name="MaterialActionBar" parent="android:style/Widget.Holo.ActionBar.Solid">
-        <item name="android:background">#394249</item>
+        <item name="android:background">#283339</item>
         <item name="android:titleTextStyle">@style/MaterialTitleText</item>
     </style>
     <style name="MaterialTitleText">
         <item name="android:textColor">#ffffffff</item>
         <item name="android:textSize">22.0dip</item>
+    </style>
+
+    <style name="MyTheme" parent="android:Theme.Holo.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_full_holo_dark</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">18.0dip</item>
     </style>
 
 </resources>

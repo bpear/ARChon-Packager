@@ -1,8 +1,6 @@
-package me.bpear.chromeapkpackager;
+package me.bpear.archonpackager;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -31,7 +29,7 @@ public class activityWizard extends FragmentActivity {
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
             // Holo light action bar color is #DDDDDD
-            int actionBarColor = Color.parseColor("#394249");
+            int actionBarColor = Color.parseColor("#283339");
             tintManager.setStatusBarTintColor(actionBarColor);
         }
     }

@@ -5,11 +5,11 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "me.bpear.chromeapkpackager"
+        applicationId "me.bpear.archonpackager"
         minSdkVersion 15
         targetSdkVersion 20
-        versionCode 13
-        versionName "0.9.3"
+        versionCode 14
+        versionName "0.9.4"
     }
     buildTypes {
         release {

@@ -1,9 +1,7 @@
-package me.bpear.chromeapkpackager;
+package me.bpear.archonpackager;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -427,6 +425,7 @@ public class activityInstalled extends Activity {
                 activityWizard.start.finish();
                 Intent intent = new Intent(activityInstalled.this, activityWizard.class);
                 finish();
+                startActivity(intent);
                 startActivity(intent);
             }
         });
