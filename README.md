@@ -1,8 +1,6 @@
 Chrome-APK-Packager
 ===================
 
-Available on Google Play: https://play.google.com/store/apps/details?id=me.bpear.chromeapkpackager
-
 XDA thread: http://forum.xda-developers.com/android/apps-games/app-chrome-apk-packager-generates-t2885958
 
 Chrome APK Packager is a convenient way to produce Chrome ARChon Custom Runtime packages directly from your phone.
