@@ -50,10 +50,12 @@
         android:background="#46B995"
         android:layout_marginBottom="4dp"
         android:textColor="#ff000000" />
+
     <RadioGroup
         android:layout_width="359dp"
         android:layout_height="0dp"
-        android:layout_weight="0.65">
+        android:layout_weight="0.65"
+        android:layout_marginBottom="4dp">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -68,6 +70,36 @@
             android:text="@string/landscape"
             android:id="@+id/radioLandscape"
             android:checked="false" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65">
+
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/other"
+                android:background="#46B995"
+                android:layout_marginBottom="4dp"
+                android:textColor="#ff000000" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/storage"
+                android:id="@+id/cbStorage" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/adb"
+                android:id="@+id/cbAdb" />
+
+        </RadioGroup>
+
     </RadioGroup>
 
 </LinearLayout>

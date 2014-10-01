@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 import net.lingala.zip4j.core.ZipFile;
@@ -32,6 +33,8 @@ public class Step3 extends WizardStep {
 
     Globals g = Globals.getInstance();
     private ProgressDialog pd;
+    int storage = 0;
+    int adb = 0;
 
     //You must have an empty constructor for every step
     public Step3() {
@@ -59,6 +62,12 @@ public class Step3 extends WizardStep {
 
         Button rb4 = (Button) getActivity().findViewById(R.id.radioLandscape); //Listen to Select an apk radio button
         rb4.setOnClickListener(next_Listener);
+
+        Button cb1 = (CheckBox) getActivity().findViewById(R.id.cbStorage); //Listen to Installed App radio button
+        cb1.setOnClickListener(next_Listener);
+
+        Button cb2 = (CheckBox) getActivity().findViewById(R.id.cbAdb); //Listen to Select an apk radio button
+        cb2.setOnClickListener(next_Listener);
     }
 
     private View.OnClickListener next_Listener = new View.OnClickListener() {
@@ -68,6 +77,8 @@ public class Step3 extends WizardStep {
             RadioButton rb2 = (RadioButton) getActivity().findViewById(R.id.radioTablet);
             RadioButton rb3 = (RadioButton) getActivity().findViewById(R.id.radioPortrait);
             RadioButton rb4 = (RadioButton) getActivity().findViewById(R.id.radioLandscape);
+            CheckBox cb1 = (CheckBox) getActivity().findViewById(R.id.cbStorage);
+            CheckBox cb2 = (CheckBox) getActivity().findViewById(R.id.cbAdb);
             if (rb1.isChecked()) { // If button 1 is checked set device mode to phone
                 g.setdevice("phone");
             }
@@ -79,6 +90,12 @@ public class Step3 extends WizardStep {
             }
             if (rb4.isChecked()) {
                 g.setrotate("landscape");
+            }
+            if (cb1.isChecked()) { // If button 3 is checked set to portrait mode.
+                storage = 1;
+            }
+            if (cb2.isChecked()) {
+                adb = 1;
             }
         }
     };
@@ -124,7 +141,24 @@ public class Step3 extends WizardStep {
             fbw.write("    \"useGoogleContactsSyncAdapter\": false,\n");
             fbw.write("    \"usePlayServices\": [\n");
             fbw.write("      \"gcm\"\n");
-            fbw.write("    ]\n");
+            if(storage == 0 && adb == 0) {
+                fbw.write("    ]\n");
+            }
+            if(storage == 1 || adb == 1) {
+                fbw.write("    ],\n");
+            }
+            if(storage == 1) {
+                fbw.write("\"enableExternalDirectory\": true");
+                if(adb == 1) {
+                    fbw.write(",\n");
+                }
+                if(adb == 0) {
+                    fbw.write("\n");
+                }
+            }
+            if(adb == 1) {
+                fbw.write("\"enableAdb\": true\n");
+            }
             fbw.write("  },\n");
             fbw.write("  \"default_locale\": \"en\",\n");
             fbw.write("  \"icons\": {\n");
@@ -161,7 +195,12 @@ public class Step3 extends WizardStep {
             fbw.write("    \"clipboardRead\",\n");
             fbw.write("    {\n");
             fbw.write("      \"fileSystem\": [\n");
-            fbw.write("        \"write\"\n");
+            if (storage == 0){
+                fbw.write("        \"write\"\n");
+            }
+            if (storage == 1){
+                fbw.write("        \"write\", \"directory\"\n");
+            }
             fbw.write("      ]\n");
             fbw.write("    },\n");
             fbw.write("    \"https://clients2.google.com/\",\n");

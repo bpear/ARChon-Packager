@@ -23,5 +23,8 @@
     <string name="location">Location: "ChromeAPKS" folder</string>
     <string name="complete_info">Easily share generated zip:</string>
     <string name="share_button">Share Chrome Application</string>
+    <string name="other">Other settings:</string>
+    <string name="storage">Enable access to apps files on PC/Chrome.</string>
+    <string name="adb">Enable ADB</string>
 
 </resources>
