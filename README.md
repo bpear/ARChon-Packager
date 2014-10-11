@@ -1,7 +1,7 @@
 ARChon-Packager
 ===================
 
-Available on Google Play: I made that mistake once and got picked on by friends
+Available on Google Play: https://play.google.com/store/apps/details?id=me.bpear.archonpackager
 
 XDA thread: http://forum.xda-developers.com/android/apps-games/app-chrome-apk-packager-generates-t2885958
 
