@@ -5,7 +5,7 @@ Available on Google Play: I made that mistake once and got picked on by friends
 
 XDA thread: http://forum.xda-developers.com/android/apps-games/app-chrome-apk-packager-generates-t2885958
 
-ARChon Packager (formerlly Chrome APK Packager) is a convenient way to produce Chrome ARChon Custom Runtime packages directly from your phone.
+ARChon Packager (formerly Chrome APK Packager) is a convenient way to produce Chrome ARChon Custom Runtime packages directly from your phone.
 
 You can generate chrome packages from either APKs on your phones storage, or from apps installed on your phone (It will pull APK)
 
