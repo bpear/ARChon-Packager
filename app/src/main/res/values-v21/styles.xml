@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+        <item name="android:actionBarStyle">@style/MaterialActionBar</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="MaterialActionBar" parent="android:style/Widget.Holo.ActionBar.Solid">
+        <item name="android:background">#283339</item>
+        <item name="android:titleTextStyle">@style/MaterialTitleText</item>
+    </style>
+
+    <style name="MaterialTitleText">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">22.0dip</item>
+    </style>
+
+    <style name="MyTheme" parent="android:Theme.Material.Dialog">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">18.0dip</item>
+    </style>
+
+</resources>
