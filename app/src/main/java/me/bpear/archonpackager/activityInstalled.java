@@ -35,7 +35,6 @@ import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import me.drakeet.materialdialog.MaterialDialog;
 
 public class activityInstalled extends Activity {
 
@@ -48,7 +47,6 @@ public class activityInstalled extends Activity {
     private ProgressDialog pd;
     ViewGroup appButtonLayout;
     Map<String, Button> map;
-    MaterialDialog mMaterialDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -413,31 +411,6 @@ public class activityInstalled extends Activity {
         //TODO: Cleanup leftover directories (Unzipped app directory, pulled app directory are not needed.)
     }
 
-    @Override
-    public void onBackPressed() {
-        mMaterialDialog = new MaterialDialog(this);
-        mMaterialDialog.setTitle("Back button pressed");
-        mMaterialDialog.setMessage("Do you want to restart the wizard?");
-        mMaterialDialog.setPositiveButton("YES", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMaterialDialog.dismiss();
-                activityWizard.start.finish();
-                Intent intent = new Intent(activityInstalled.this, activityWizard.class);
-                finish();
-                startActivity(intent);
-                startActivity(intent);
-            }
-        });
-
-        mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMaterialDialog.dismiss();
-
-            }
-        });
-    }
 
 }
 

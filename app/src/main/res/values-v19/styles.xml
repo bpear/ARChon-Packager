@@ -2,7 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo">
-        <item name="android:windowBackground">@drawable/background_holo_dark</item>
         <item name="android:alertDialogStyle">@android:style/Theme.Holo.Dialog</item>
         <item name="android:dialogTheme">@android:style/Theme.Holo.Dialog</item>
         <item name="android:actionBarStyle">@style/MaterialActionBar</item>
@@ -22,7 +21,6 @@
     </style>
 
     <style name="MyTheme" parent="android:Theme.Holo.Dialog">
-        <item name="android:windowBackground">@drawable/dialog_full_holo_dark</item>
         <item name="android:textColor">#ffffffff</item>
         <item name="android:textSize">18.0dip</item>
     </style>
