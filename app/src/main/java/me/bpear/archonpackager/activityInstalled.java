@@ -163,15 +163,37 @@ public class activityInstalled extends Activity {
                 if (resultCode == RESULT_OK) { //If pick file was successful
                     g.setAPKPath(data.getData().getPath()); //Get apk path from global variables.
                     Toast.makeText(this, "APK Selected.", Toast.LENGTH_LONG).show();
+                    AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() { //Start progress dialog and run task in background
 
+                        @Override
+                        protected void onPreExecute() {
+                            pd = new ProgressDialog(activityInstalled.this);
+                            pd.setTitle("Processing...");
+                            pd.setMessage("Please wait.");
+                            pd.setCancelable(false);
+                            pd.setIndeterminate(true);
+                            pd.show();
+                        }
 
-                    try {
-                        SelectedAPK();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                        @Override
+                        protected Void doInBackground(Void... arg0) {
+                            try {
+                                SelectedAPK();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            return null;
+                        }
 
+                        @Override
+                        protected void onPostExecute(Void result) {
+                            if (pd != null) {
+                                pd.dismiss();
+                            }
+                        }
 
+                    };
+                    task.execute((Void[]) null);
                 }
                 break;
 
