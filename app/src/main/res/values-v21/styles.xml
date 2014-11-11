@@ -15,7 +15,6 @@
     </style>
 
     <style name="MaterialActionBar" parent="android:style/Widget.Holo.ActionBar.Solid">
-        <item name="android:background">#283339</item>
         <item name="android:titleTextStyle">@style/MaterialTitleText</item>
     </style>
 
