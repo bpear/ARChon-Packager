@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Chrome APK Packager</string>
+    <string name="app_name">ARChon Packager</string>
     <string name="action_settings">Settings</string>
     <string name="step1text">Welcome to Chrome APK Packager.</string>
     <string name="step1what">This allows for Chrome Extensions to be easily generated from Android Apps installed on your phone.</string>
